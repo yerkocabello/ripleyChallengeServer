@@ -3,16 +3,20 @@ const app = express();
 require("dotenv").config();
 require('./database');
 const bodyParser = require('body-parser')
+var cors = require('cors')
+var router = express.Router();
 
 const morgan = require('morgan');
 app.use(morgan('dev'));
 app.use(bodyParser.json());
+app.use(cors());
 
-app.use(require('./routes/destinatario.routes'));
-app.use(require('./routes/banco.routes'));
-app.use(require('./routes/cuenta.routes'));
-app.use(require('./routes/transferencia.routes'));
+router.use(require('./routes/destinatario.routes'));
+router.use(require('./routes/banco.routes'));
+router.use(require('./routes/cuenta.routes'));
+router.use(require('./routes/transferencia.routes'));
 
+app.use('/api/v1', router);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log("Node server started");
