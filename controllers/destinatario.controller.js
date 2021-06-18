@@ -2,15 +2,15 @@ const  destinatarioCtrl = {};
 const Destinatario = require('../models/destinatario.model');
 
 destinatarioCtrl.createNewDestinatario = async (req, res) => {
-	console.log(req.body);
 	try{
-		const { rut, nombre, correo, telefono , banco, cuenta } = req.body;
+		const { rut, nombre, correo, telefono , banco, numeroCuenta, cuenta } = req.body;
 		const newDestinatario = new Destinatario({
 			rut,
 			nombre,
 			correo,
 			telefono,
 			banco,
+			numeroCuenta,
 			cuenta
 		});
 		await newDestinatario.save();
@@ -25,7 +25,7 @@ destinatarioCtrl.getAllDestinatarios = async (req, res) => {
 	const destinatarios = await Destinatario.find();
 	if(destinatarios.length > 0){
 		res.status(200).send({
-			data: notes,
+			data: destinatarios,
 			message: 'OK'
 		});
 	}else{ 

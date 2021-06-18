@@ -22,7 +22,7 @@ const DestinatarioSchema = new Schema({
 			type: String,
 			required: true
 		},
-		descripcion: {
+		name: {
 			type: String,
 			required: true
 		},
