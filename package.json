@@ -20,7 +20,8 @@
   },
   "scripts": {
     "test": "test",
-    "start": "nodemon app.js"
+    "development": "nodemon app.js",
+    "start": "node app.js"
   },
   "author": "yerko",
   "license": "ISC"

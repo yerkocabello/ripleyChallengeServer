@@ -17,8 +17,9 @@ router.use(require('./routes/cuenta.routes'));
 router.use(require('./routes/transferencia.routes'));
 
 app.use('/api/v1', router);
+const host = process.env.HOST || '0.0.0.0';
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 3000, host,() => {
     console.log("Node server started");
     //app.use('/', jobsRouter);
 });
